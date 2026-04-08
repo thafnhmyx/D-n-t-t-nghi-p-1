@@ -1,0 +1,174 @@
+/* --- 1. CẤU HÌNH CHUNG (ROOT) --- */
+:root {
+  --primary-color: #FF6B00;    /* Màu cam chủ đạo Figma */
+  --secondary-color: #000000;  /* Màu đen Header/Footer */
+  --text-color: #333333;
+  --text-light: #888888;
+  --bg-light: #F5F5F5;
+  --border-color: #EEEEEE;
+  --white: #FFFFFF;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  line-height: 1.6;
+  color: var(--text-color);
+  background-color: var(--white);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+img { max-width: 100%; display: block; }
+
+/* --- 2. CÁC THÀNH PHẦN NÚT (BUTTONS) --- */
+.btn-primary {
+  background-color: var(--primary-color);
+  color: var(--white);
+  border: none;
+  padding: 12px 25px;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn-primary:hover {
+  background-color: #e66000;
+  transform: translateY(-2px);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 1px solid var(--primary-color);
+  color: var(--primary-color);
+  padding: 10px 20px;
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+/* --- 3. BỐ CỤC LƯỚI (GRID SYSTEM) --- */
+/* Lưới sản phẩm 4 cột (Trang chủ/Shop) */
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin: 30px 0;
+}
+
+/* Lưới tin tức 3 cột (Trang bài viết) */
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+  margin: 40px 0;
+}
+
+/* --- 4. THẺ SẢN PHẨM (PRODUCT CARD) --- */
+.product-card {
+  background: var(--white);
+  border: 1px solid var(--border-color);
+  border-radius: 12px;
+  padding: 15px;
+  text-align: center;
+  transition: 0.3s;
+}
+
+.product-card:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+}
+
+.product-card img {
+  height: 200px;
+  object-fit: contain;
+  margin: 0 auto 15px;
+}
+
+.product-card h3 { font-size: 14px; color: var(--text-light); }
+.product-card .name { font-weight: bold; margin: 5px 0; font-size: 16px; }
+.product-card .price { color: var(--primary-color); font-weight: bold; }
+.product-card .old-price { text-decoration: line-through; color: var(--text-light); font-size: 13px; margin-left: 10px; }
+
+/* --- 5. TRANG THANH TOÁN & GIỎ HÀNG (CHECKOUT/CART) --- */
+.cart-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.cart-table th {
+  text-align: left;
+  padding-bottom: 15px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.cart-table td {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* --- 6. FORM ĐĂNG NHẬP / ĐĂNG KÝ --- */
+.auth-container {
+  background: linear-gradient(to right, #fdfbfb, #ebedee);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.auth-form {
+  background: var(--white);
+  padding: 40px;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  width: 100%;
+  max-width: 500px;
+}
+
+.auth-form input {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-top: 8px;
+  outline: none;
+}
+
+.auth-form input:focus {
+  border-color: var(--primary-color);
+}
+
+/* --- 7. FOOTER --- */
+footer {
+  background-color: var(--secondary-color);
+  color: var(--white);
+  padding: 60px 0 20px;
+}
+
+footer h4 { margin-bottom: 20px; text-transform: uppercase; }
+footer p { color: #ccc; font-size: 14px; margin-bottom: 10px; }
+footer ul li { margin-bottom: 10px; color: #ccc; cursor: pointer; }
+footer ul li:hover { color: var(--primary-color); }
+
+/* --- 8. RESPONSIVE (DÀNH CHO DI ĐỘNG) --- */
+@media (max-width: 1024px) {
+  .product-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .product-grid { grid-template-columns: repeat(2, 1fr); }
+  .news-grid { grid-template-columns: 1fr; }
+  
+  .auth-container .logo-side { display: none; } /* Ẩn logo trang login trên mobile */
+  
+  .header nav { flex-direction: column; gap: 15px; }
+}
